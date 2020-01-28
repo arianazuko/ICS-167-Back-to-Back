@@ -7,26 +7,34 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
 
     public Rigidbody2D rb;
-    public Animator animator;
+    Object bulletRef; 
 
     Vector2 movement;
+
+    private void Start()
+    {
+        bulletRef = Resources.Load("GreenCircle");
+    }
 
     // Update is called once per frame
     void Update()
     {
-        //Input
 
+        //Input
         movement.x = Input.GetAxisRaw("Horizontal");
 
         movement.y = Input.GetAxisRaw("Vertical");
 
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude); 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            GameObject bullet = (GameObject)Instantiate(bulletRef);
+            bullet.transform.position = rb.position;
+        }
+
     }
 
     private void FixedUpdate()
-    {
+    {   
         // movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
