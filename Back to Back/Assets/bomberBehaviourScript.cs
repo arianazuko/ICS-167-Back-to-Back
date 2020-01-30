@@ -45,7 +45,8 @@ public class bomberBehaviourScript : MonoBehaviour
 
     private void explode()
     {
-        GameObject insObj = (GameObject)Instantiate(explosionEffect);
+
+        GameObject insObj = (GameObject)Instantiate(explosionEffect,transform.position,transform.rotation);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, expRadius);
         for (int i = 0; i <= colliders.Length - 1; i++)
