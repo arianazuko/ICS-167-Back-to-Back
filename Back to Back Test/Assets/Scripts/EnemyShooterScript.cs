@@ -24,6 +24,7 @@ public class EnemyShooterScript : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameController.instance.numEnemies -= 1;
             Destroy(this.gameObject);
         }
     }

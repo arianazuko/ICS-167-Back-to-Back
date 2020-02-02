@@ -28,6 +28,7 @@ public class EnemyBomberScript : MonoBehaviour
     {
         if (health <= 0)
         {
+            GameController.instance.numEnemies -= 1;
             Destroy(this.gameObject);
         }
         move();
@@ -73,6 +74,7 @@ public class EnemyBomberScript : MonoBehaviour
         }
 
         //Destroy(insObj, 2f);
+        GameController.instance.numEnemies -= 1;
         Destroy(gameObject);
 
     }

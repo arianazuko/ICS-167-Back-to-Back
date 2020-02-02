@@ -6,7 +6,7 @@ public class SpawnerScript : MonoBehaviour
 {
     public GameObject monsterType;
     public int maxMonsterNum;
-    int MonsterNum = 0;
+    public int MonsterNum = 0;
     public float spawnDelay;
     bool pause;
     //GameObject[] monsterArray;
