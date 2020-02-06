@@ -98,7 +98,13 @@ public class EnemyBomberScript : MonoBehaviour
             Destroy(collision.gameObject);
             health -= 5;
         }
-
+        if (GameController.instance.specialActivated)
+        {
+            if (collision.gameObject.name == "Player 2 Energy")
+            {
+                health -= 2 * Time.fixedDeltaTime;
+            }
+        }
     }
 
 }
