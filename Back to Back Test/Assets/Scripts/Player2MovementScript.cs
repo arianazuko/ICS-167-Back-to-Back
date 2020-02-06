@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player2MovementScript : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float spinSpeed = 10f;
 
     private Rigidbody2D rb;
 
@@ -27,12 +28,13 @@ public class Player2MovementScript : MonoBehaviour
 
             movement.y = Input.GetAxisRaw("Vertical1");
 
-            if (Input.GetButtonDown("Rotate"))
+            //this will rotate continuously
+            if (Input.GetAxisRaw("Rotate") != 0) 
             {
-                //rotating entire gameObject
-                this.transform.Rotate(0, 0, 45 * Input.GetAxisRaw("Rotate"));
+                float spinSpeed = 5f;
+                
+                this.transform.Rotate(0, 0, spinSpeed * Input.GetAxisRaw("Rotate"));
             }
-
         }
     }
 

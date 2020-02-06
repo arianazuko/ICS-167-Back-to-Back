@@ -6,6 +6,7 @@ public class ShieldScript : MonoBehaviour
 {
     private Collider2D shieldCollider;
     private SpriteRenderer shieldSpriteRenderer;
+    private bool shieldMode = true;
 
     void Start()
     {
@@ -24,21 +25,51 @@ public class ShieldScript : MonoBehaviour
             shieldCollider.enabled = true;
             shieldSpriteRenderer.enabled = true;
         }
+
+        if (Input.GetButtonDown("Shield Switch"))
+        {
+            shieldMode = !shieldMode;
+            if (shieldMode)
+            {
+                shieldSpriteRenderer.color = Color.white;
+            }
+            else
+            {
+                shieldSpriteRenderer.color = Color.red;
+            }
+        }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Player")
+        // if (collision.gameObject.tag == "Player")
+        // {
+        //     Physics2D.IgnoreCollision(collision.collider, shieldCollider);
+        // }
+        if (collision.gameObject.tag == "EnemyBullet")
         {
-            Physics2D.IgnoreCollision(collision.collider, shieldCollider);
+            if (shieldMode)
+            {
+                if (GameController.instance.numHits > 0)
+                {
+                    Destroy(collision.gameObject);
+                    GameController.instance.numHits -= 1;
+                    GameController.instance.specialMeter += 4;
+                }
+            }
         }
-        else if (collision.gameObject.tag == "EnemyBullet")
+        else if (collision.gameObject.tag == "SpecialEnemyBullet")
         {
-            if (GameController.instance.numHits > 0)
+            if (shieldMode)
             {
                 Destroy(collision.gameObject);
                 GameController.instance.numHits -= 1;
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+                GameController.instance.specialMeter += 5;
             }
         }
 

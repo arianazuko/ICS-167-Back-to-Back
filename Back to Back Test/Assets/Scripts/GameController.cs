@@ -11,9 +11,11 @@ public class GameController : MonoBehaviour
     int maxHealth = 100;
     public int numHits = 5;
     public int numBullets = 5;
+    public int specialMeter = 0;
 
     public int maxHits = 10;
     public int maxBullets = 10;
+    public int maxSpecialMeter = 100;
 
     public int numEnemies;
     private float timer = 0.0f;

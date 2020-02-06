@@ -25,6 +25,10 @@ public class EnemyShooterScript : MonoBehaviour
         if (health <= 0)
         {
             GameController.instance.numEnemies -= 1;
+            if (GameController.instance.specialMeter < GameController.instance.maxSpecialMeter)
+            {
+                GameController.instance.specialMeter += 3;
+            }
             Destroy(this.gameObject);
         }
     }
