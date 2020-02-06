@@ -37,7 +37,10 @@ public class Player1MovementScript : MonoBehaviour
                     direction.Normalize();
                     GameObject projectile = (GameObject)Instantiate(bullet, myPos, Quaternion.identity);
                     projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-                    GameController.instance.numBullets -= 1;
+                    if (!GameController.instance.specialActivated)
+                    {
+                        GameController.instance.numBullets -= 1;
+                    }
                 }
             }
         }
@@ -54,12 +57,18 @@ public class Player1MovementScript : MonoBehaviour
         if (collision.gameObject.tag == "EnemyBullet")
         {
             Destroy(collision.gameObject);
-            GameController.instance.health -= 10;
+            if (!GameController.instance.specialActivated)
+            {
+                GameController.instance.health -= 10;
+            }
             Debug.Log(GameController.instance.health);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            GameController.instance.health -= 10;
+            if (!GameController.instance.specialActivated)
+            {
+                GameController.instance.health -= 10;
+            }
             Debug.Log(GameController.instance.health);
         }
     }

@@ -43,10 +43,10 @@ public class ShieldScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.gameObject.tag);
-        // if (collision.gameObject.tag == "Player")
-        // {
-        //     Physics2D.IgnoreCollision(collision.collider, shieldCollider);
-        // }
+        if (collision.gameObject.tag == "Player")
+         {
+             Physics2D.IgnoreCollision(collision.GetComponent<Collider2D>(), shieldCollider);
+        }
         if (collision.gameObject.tag == "EnemyBullet")
         {
             if (shieldMode)
@@ -54,8 +54,11 @@ public class ShieldScript : MonoBehaviour
                 if (GameController.instance.numHits > 0)
                 {
                     Destroy(collision.gameObject);
-                    GameController.instance.numHits -= 1;
-                    GameController.instance.specialMeter += 4;
+                    if (!GameController.instance.specialActivated)
+                    {
+                        GameController.instance.numHits -= 1;
+                        GameController.instance.specialMeter += 4;
+                    }
                 }
             }
         }
@@ -64,12 +67,18 @@ public class ShieldScript : MonoBehaviour
             if (shieldMode)
             {
                 Destroy(collision.gameObject);
-                GameController.instance.numHits -= 1;
+                if (!GameController.instance.specialActivated)
+                {
+                    GameController.instance.numHits -= 1;
+                }
             }
             else
             {
                 Destroy(collision.gameObject);
-                GameController.instance.specialMeter += 5;
+                if (!GameController.instance.specialActivated)
+                {
+                    GameController.instance.specialMeter += 5;
+                }
             }
         }
 

@@ -8,6 +8,8 @@ public class Player2MovementScript : MonoBehaviour
     public float spinSpeed = 10f;
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
+    private Vector4 originalColor;
 
     private float rotation;
 
@@ -16,6 +18,8 @@ public class Player2MovementScript : MonoBehaviour
     private void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
+        spriteRenderer = this.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     // Update is called once per frame
@@ -35,6 +39,19 @@ public class Player2MovementScript : MonoBehaviour
                 
                 this.transform.Rotate(0, 0, spinSpeed * Input.GetAxisRaw("Rotate"));
             }
+
+            //special button
+            //only needed for this player since accessing gamecontroller
+            if (Input.GetButtonDown("Special") )
+            {
+                Debug.Log("Special");
+                if (GameController.instance.specialMeter >= GameController.instance.maxSpecialMeter)
+                {
+                    Debug.Log("Special Activated");
+                    GameController.instance.specialActivated = true;
+                    spriteRenderer.color = Color.gray;
+                }
+            }
         }
     }
 
@@ -42,6 +59,20 @@ public class Player2MovementScript : MonoBehaviour
     {
         // movement
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        //special logic
+        //only needed for this player since accessing gamecontroller
+        if (GameController.instance.specialActivated)
+        {
+            GameController.instance.specialMeter -= GameController.instance.specialDrain * Time.fixedDeltaTime;
+            Debug.Log(GameController.instance.specialMeter);
+            if(GameController.instance.specialMeter <= 0)
+            {
+                GameController.instance.specialActivated = false;
+                spriteRenderer.color = originalColor;
+                GameController.instance.specialMeter = 0;
+            }
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -49,12 +80,18 @@ public class Player2MovementScript : MonoBehaviour
         if (collision.gameObject.tag == "EnemyBullet")
         {
             Destroy(collision.gameObject);
-            GameController.instance.health -= 10;
+            if (!GameController.instance.specialActivated)
+            {
+                GameController.instance.health -= 10;
+            }
             Debug.Log(GameController.instance.health);
         }
         else if (collision.gameObject.tag == "Enemy")
         {
-            GameController.instance.health -= 10;
+            if (!GameController.instance.specialActivated)
+            {
+                GameController.instance.health -= 10;
+            }
             Debug.Log(GameController.instance.health);
         }
     }
