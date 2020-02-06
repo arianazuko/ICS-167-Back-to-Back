@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 2
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -87,7 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -147,6 +155,11 @@ MonoBehaviour:
   maxHits: 10
   maxBullets: 10
   numEnemies: 2
+  oneonecomplete: 0
+  onetwocomplete: 0
+  twoonecomplete: 0
+  threeonecomplete: 0
+  twotwocomplete: 0
   spawners:
   - {fileID: 0}
   - {fileID: 0}
@@ -403,10 +416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
+    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
-      propertyPath: maxMonsterNum
-      value: 4
+      propertyPath: m_Name
+      value: Bomber Spawner (1)
       objectReference: {fileID: 0}
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
@@ -421,7 +434,7 @@ PrefabInstance:
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
@@ -463,10 +476,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
+    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
-      propertyPath: m_Name
-      value: Bomber Spawner (1)
+      propertyPath: maxMonsterNum
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}
@@ -477,6 +490,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -490,7 +508,7 @@ PrefabInstance:
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
@@ -536,11 +554,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
@@ -1145,15 +1158,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9193714225777051664, guid: b62429dcaa794de419d2e0617fc170fd,
-        type: 3}
-      propertyPath: transportScene
-      value: Boss
-      objectReference: {fileID: 0}
     - target: {fileID: 9193714225777051667, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
       propertyPath: m_Name
       value: Boss Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193714225777051664, guid: b62429dcaa794de419d2e0617fc170fd,
+        type: 3}
+      propertyPath: transportScene
+      value: Boss
       objectReference: {fileID: 0}
     - target: {fileID: 9193714225777051678, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
@@ -1168,7 +1181,7 @@ PrefabInstance:
     - target: {fileID: 9193714225777051678, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9193714225777051678, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
@@ -1414,6 +1427,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &403712222
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -1439,6 +1454,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1471,7 +1487,7 @@ Tilemap:
   - first: {x: -11, y: -6, z: 0}
     second:
       m_TileIndex: 27
-      m_TileSpriteIndex: 27
+      m_TileSpriteIndex: 38
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1480,7 +1496,7 @@ Tilemap:
   - first: {x: -10, y: -6, z: 0}
     second:
       m_TileIndex: 28
-      m_TileSpriteIndex: 28
+      m_TileSpriteIndex: 35
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1651,7 +1667,7 @@ Tilemap:
   - first: {x: 9, y: -6, z: 0}
     second:
       m_TileIndex: 8
-      m_TileSpriteIndex: 8
+      m_TileSpriteIndex: 28
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1660,7 +1676,7 @@ Tilemap:
   - first: {x: 10, y: -6, z: 0}
     second:
       m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileSpriteIndex: 27
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1669,7 +1685,7 @@ Tilemap:
   - first: {x: 11, y: -6, z: 0}
     second:
       m_TileIndex: 6
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 18
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1867,7 +1883,7 @@ Tilemap:
   - first: {x: 10, y: -5, z: 0}
     second:
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1876,7 +1892,7 @@ Tilemap:
   - first: {x: 11, y: -5, z: 0}
     second:
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -2727,24 +2743,24 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300370, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300368, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 1
-    m_Data: {fileID: 21300406, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300404, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300402, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
+    m_Data: {fileID: 21300370, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300080, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300082, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300368, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300040, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
@@ -2757,8 +2773,8 @@ Tilemap:
     m_Data: {fileID: 21300002, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300004, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300406, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300096, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
@@ -2776,9 +2792,9 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300018, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300388, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
+    m_Data: {fileID: 21300404, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 21300390, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
+    m_Data: {fileID: 21300402, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300392, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
@@ -2791,14 +2807,14 @@ Tilemap:
     m_Data: {fileID: 21300326, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300328, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300390, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 21300186, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 7
     m_Data: {fileID: 21300188, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300388, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300362, guid: 95d22684aba5646d79a26b3287a692b6, type: 3}
   - m_RefCount: 7
@@ -3102,9 +3118,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3421,7 +3438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727844108}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 991542615}
@@ -3648,6 +3665,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3843,6 +3861,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3893,7 +3912,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829493373}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: -1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1923295809}
@@ -4114,10 +4133,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
+    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
-      propertyPath: maxMonsterNum
-      value: 4
+      propertyPath: m_Name
+      value: Bomber Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
@@ -4132,7 +4151,7 @@ PrefabInstance:
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
@@ -4174,10 +4193,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
+    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
-      propertyPath: m_Name
-      value: Bomber Spawner
+      propertyPath: maxMonsterNum
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}
@@ -4276,6 +4295,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4421,6 +4441,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4451,6 +4472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4464,7 +4490,7 @@ PrefabInstance:
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
@@ -4510,11 +4536,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
@@ -4884,15 +4905,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 9193714225777051664, guid: b62429dcaa794de419d2e0617fc170fd,
-        type: 3}
-      propertyPath: transportScene
-      value: 2-1
-      objectReference: {fileID: 0}
     - target: {fileID: 9193714225777051667, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
       propertyPath: m_Name
       value: 2-1 Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 9193714225777051664, guid: b62429dcaa794de419d2e0617fc170fd,
+        type: 3}
+      propertyPath: transportScene
+      value: 2-1
       objectReference: {fileID: 0}
     - target: {fileID: 9193714225777051678, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
@@ -4907,7 +4928,7 @@ PrefabInstance:
     - target: {fileID: 9193714225777051678, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 9193714225777051678, guid: b62429dcaa794de419d2e0617fc170fd,
         type: 3}
@@ -5570,6 +5591,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5583,7 +5609,7 @@ PrefabInstance:
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
@@ -5629,11 +5655,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
@@ -5693,6 +5714,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -5928,6 +5950,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -8899,6 +8922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8912,7 +8940,7 @@ PrefabInstance:
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
@@ -8958,11 +8986,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
