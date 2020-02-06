@@ -49,12 +49,28 @@ public class EnemyShooterScript : MonoBehaviour
             Vector2 direction = target - myPos;
             direction.Normalize();
             GameObject projectile1 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
+            //randomizer for special bullet
+            if (Random.value * 100 <= 20)
+            {
+                projectile1.tag = "SpecialEnemyBullet";
+                projectile1.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
             projectile1.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
             yield return new WaitForSeconds(0.5f);
             GameObject projectile2 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
+            if (Random.value * 100 <= 20)
+            {
+                projectile2.tag = "SpecialEnemyBullet";
+                projectile2.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
             projectile2.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
             yield return new WaitForSeconds(0.5f);
             GameObject projectile3 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
+            if (Random.value * 100 <= 20)
+            {
+                projectile3.tag = "SpecialEnemyBullet";
+                projectile3.transform.GetChild(0).GetComponent<SpriteRenderer>().color = Color.yellow;
+            }
             projectile3.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
 
             yield return new WaitForSeconds(3.0f);

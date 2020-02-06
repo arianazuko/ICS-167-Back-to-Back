@@ -150,10 +150,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  numHits: 5
-  numBullets: 5
-  maxHits: 10
-  maxBullets: 10
+  numHits: 3
+  numBullets: 3
+  specialMeter: 0
+  specialActivated: 0
+  maxHits: 3
+  maxBullets: 3
+  maxSpecialMeter: 100
+  specialDrain: 15
   numEnemies: 2
   oneonecomplete: 0
   onetwocomplete: 0
@@ -2916,7 +2920,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3037,7 +3041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passedTime: 0
-  neededTime: 5
+  neededTime: 0.75
   regenColor: {r: 227, g: 0, b: 255, a: 0.41960785}
   myColor: {r: 0, g: 0.627451, b: 0.79215693, a: 0.41960785}
   otherColor: {r: 0.33333334, g: 0.3921569, b: 0.6431373, a: 0.41960785}
@@ -3139,6 +3143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  spinSpeed: 10
 --- !u!50 &829493376
 Rigidbody2D:
   serializedVersion: 4
@@ -3343,6 +3348,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomber Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
+        type: 3}
+      propertyPath: maxMonsterNum
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3397,11 +3407,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
-        type: 3}
-      propertyPath: maxMonsterNum
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}

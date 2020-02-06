@@ -19,7 +19,7 @@ public class EnemyBomberScript : MonoBehaviour
     void Awake()
     {
         possibleTargets = GameObject.FindGameObjectsWithTag("Player");
-        target = possibleTargets[Random.Range(0, possibleTargets.Length)];
+        target = possibleTargets[Random.Range(0, possibleTargets.Length - 1)];
         rb = GetComponent<Rigidbody2D>();
     }
 

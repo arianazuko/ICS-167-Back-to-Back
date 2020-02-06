@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 10
+    serializedVersion: 12
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,6 +62,7 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -76,10 +77,16 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 500
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 2
+    m_PVRDenoiserTypeDirect: 0
+    m_PVRDenoiserTypeIndirect: 0
+    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVRFilteringMode: 2
+    m_PVREnvironmentMIS: 0
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -87,7 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -142,10 +150,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  numHits: 5
-  numBullets: 5
-  maxHits: 10
-  maxBullets: 10
+  numHits: 3
+  numBullets: 3
+  specialMeter: 0
+  specialActivated: 0
+  maxHits: 3
+  maxBullets: 3
+  maxSpecialMeter: 100
+  specialDrain: 15
   numEnemies: 2
   oneonecomplete: 0
   onetwocomplete: 0
@@ -408,6 +420,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
+        type: 3}
+      propertyPath: m_Name
+      value: Bomber Spawner (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: maxMonsterNum
@@ -468,11 +485,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
-        type: 3}
-      propertyPath: m_Name
-      value: Bomber Spawner (1)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}
 --- !u!1001 &213898344
@@ -482,6 +494,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -541,11 +558,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
@@ -1345,6 +1357,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &403712222
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -1370,6 +1384,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3087,9 +3102,10 @@ Camera:
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -3633,6 +3649,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3678,7 +3695,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3799,7 +3816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passedTime: 0
-  neededTime: 5
+  neededTime: 0.75
   regenColor: {r: 227, g: 0, b: 255, a: 0.41960785}
   myColor: {r: 0, g: 0.627451, b: 0.79215693, a: 0.41960785}
   otherColor: {r: 0.33333334, g: 0.3921569, b: 0.6431373, a: 0.41960785}
@@ -3828,6 +3845,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -3900,6 +3918,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  spinSpeed: 10
 --- !u!50 &829493376
 Rigidbody2D:
   serializedVersion: 4
@@ -4099,6 +4118,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
+        type: 3}
+      propertyPath: m_Name
+      value: Bomber Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: maxMonsterNum
@@ -4158,11 +4182,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54392723168889255, guid: e831dd886610c634e8d36717e6cd84e7,
-        type: 3}
-      propertyPath: m_Name
-      value: Bomber Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}
@@ -4261,6 +4280,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4406,6 +4426,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4436,6 +4457,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4495,11 +4521,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
@@ -5481,6 +5502,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5541,11 +5567,6 @@ PrefabInstance:
       propertyPath: maxMonsterNum
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner (3)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
 --- !u!1 &1923295808
@@ -5604,6 +5625,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -5839,6 +5861,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -7163,6 +7186,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: m_Name
+      value: Shooter Spawner (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7222,11 +7250,6 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3167700555077172926, guid: ac9bb513362686843bd92fa21b1c502e,
-        type: 3}
-      propertyPath: m_Name
-      value: Shooter Spawner (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}

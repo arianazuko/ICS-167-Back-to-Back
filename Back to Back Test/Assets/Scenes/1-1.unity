@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passedTime: 0
-  neededTime: 1
+  neededTime: 0.75
   regenColor: {r: 227, g: 0, b: 255, a: 0.41960785}
   myColor: {r: 0, g: 0.627451, b: 0.79215693, a: 0.41960785}
   otherColor: {r: 0.33333334, g: 0.3921569, b: 0.6431373, a: 0.41960785}
@@ -8349,12 +8349,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  numHits: 5
-  numBullets: 5
+  numHits: 3
+  numBullets: 3
   specialMeter: 0
-  maxHits: 10
-  maxBullets: 10
+  specialActivated: 0
+  maxHits: 3
+  maxBullets: 3
   maxSpecialMeter: 100
+  specialDrain: 15
   numEnemies: 2
   oneonecomplete: 1
   onetwocomplete: 0

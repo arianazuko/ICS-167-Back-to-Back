@@ -6,6 +6,7 @@ public class ShieldScript : MonoBehaviour
 {
     private Collider2D shieldCollider;
     private SpriteRenderer shieldSpriteRenderer;
+    //for if they are blocking regular or special bullets
     private bool shieldMode = true;
 
     void Start()
@@ -29,6 +30,7 @@ public class ShieldScript : MonoBehaviour
         if (Input.GetButtonDown("Shield Switch"))
         {
             shieldMode = !shieldMode;
+            //just to identify which shield is on
             if (shieldMode)
             {
                 shieldSpriteRenderer.color = Color.white;
@@ -42,6 +44,10 @@ public class ShieldScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        //added logic for special bullets
+        //if shield mode, blocks regular and special but gives normal amount of special
+        //if special block, does blocks regular but takes extra damage and special gains extra special
+        //special does not deal damage if blocking with special
         Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "Player")
          {
@@ -61,6 +67,10 @@ public class ShieldScript : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+                GameController.instance.numHits -= 2;
+            }
         }
         else if (collision.gameObject.tag == "SpecialEnemyBullet")
         {
@@ -77,7 +87,7 @@ public class ShieldScript : MonoBehaviour
                 Destroy(collision.gameObject);
                 if (!GameController.instance.specialActivated)
                 {
-                    GameController.instance.specialMeter += 5;
+                    GameController.instance.specialMeter += 8;
                 }
             }
         }

@@ -37,6 +37,7 @@ public class Player1MovementScript : MonoBehaviour
                     direction.Normalize();
                     GameObject projectile = (GameObject)Instantiate(bullet, myPos, Quaternion.identity);
                     projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+                    //special makes player rapid fire with unlimited ammo
                     if (!GameController.instance.specialActivated)
                     {
                         GameController.instance.numBullets -= 1;
@@ -54,7 +55,7 @@ public class Player1MovementScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "SpecialEnemyBullet")
         {
             Destroy(collision.gameObject);
             if (!GameController.instance.specialActivated)

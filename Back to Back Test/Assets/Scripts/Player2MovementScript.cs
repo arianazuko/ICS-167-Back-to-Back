@@ -77,7 +77,8 @@ public class Player2MovementScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        //The specialActivated part is to check if they are invincible
+        if (collision.gameObject.tag == "EnemyBullet" || collision.gameObject.tag == "SpecialEnemyBullet")
         {
             Destroy(collision.gameObject);
             if (!GameController.instance.specialActivated)

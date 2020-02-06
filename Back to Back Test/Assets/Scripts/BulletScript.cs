@@ -28,6 +28,17 @@ public class BulletScript : MonoBehaviour
             }
 
         }
+
+        if (this.tag == "SpecialEnemyBullet")
+        {
+            GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Enemy");
+
+            foreach (GameObject obj in playerObjects)
+            {
+                Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+            }
+
+        }
         Invoke("DestroySelf", 1.5f);
     }
 
