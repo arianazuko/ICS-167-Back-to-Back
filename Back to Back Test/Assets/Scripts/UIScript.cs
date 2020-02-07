@@ -16,6 +16,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] protected TextMeshProUGUI healthUI;
     [SerializeField] protected TextMeshProUGUI hitsUI;
     [SerializeField] protected TextMeshProUGUI bulletsUI;
+    [SerializeField] protected TextMeshProUGUI specialUI;
 
     void Awake()
     {
@@ -54,6 +55,7 @@ public class UIScript : MonoBehaviour
         healthUI.text = "Health:" + GameController.instance.health;
         hitsUI.text = "Shield:" + GameController.instance.numHits;
         bulletsUI.text = "Bullets:" + GameController.instance.numBullets;
+        specialUI.text = "Special:" + GameController.instance.specialMeter;
     }
 
     public void Resume()
