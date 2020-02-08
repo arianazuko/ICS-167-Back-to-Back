@@ -21,7 +21,8 @@ public class GameController : MonoBehaviour
 
     public int numEnemies;
     private float timer = 0.0f;
-    private float maxTime = 5.0f;
+    private float maxTime = 8.0f;
+    private bool textActive = false;
 
     public bool oneonecomplete = false;
     public bool onetwocomplete = false;
@@ -125,11 +126,18 @@ public class GameController : MonoBehaviour
         }
         if (numEnemies == 0)
         {
+            if (textActive == false)
+            {
+                UIScript.instance.GetToPortal();
+                textActive = true;
+            }
             timer += Time.deltaTime;
             Debug.Log(timer);
         }
         if (timer >= maxTime)
         {
+            UIScript.instance.GetToPortal();
+            textActive = false;
             Debug.Log("cats");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

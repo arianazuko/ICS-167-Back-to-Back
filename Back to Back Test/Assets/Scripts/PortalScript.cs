@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PortalScript : MonoBehaviour
 {
     [SerializeField] protected string transportScene;
+    [SerializeField] protected SpriteRenderer portalSprite;
     [SerializeField] protected float portalRadius = 1.0f;
 
     private bool oneinside = false;
@@ -22,6 +23,7 @@ public class PortalScript : MonoBehaviour
     {
         if (GameController.instance.numEnemies == 0)
         {
+            portalSprite.enabled = true;
             checkBothPlayers();
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIScript : MonoBehaviour
 {
@@ -12,11 +13,12 @@ public class UIScript : MonoBehaviour
     [SerializeField] protected GameObject pauseMenuUI;
 
     [SerializeField] protected GameObject gameOverUI;
+    [SerializeField] protected GameObject portalUI;
 
-    [SerializeField] protected TextMeshProUGUI healthUI;
-    [SerializeField] protected TextMeshProUGUI hitsUI;
-    [SerializeField] protected TextMeshProUGUI bulletsUI;
-    [SerializeField] protected TextMeshProUGUI specialUI;
+    [SerializeField] protected Slider healthUI;
+    [SerializeField] protected Slider hitsUI;
+    [SerializeField] protected Slider bulletsUI;
+    [SerializeField] protected Slider specialUI;
 
     void Awake()
     {
@@ -52,10 +54,10 @@ public class UIScript : MonoBehaviour
             }
         }
 
-        healthUI.text = "Health:" + GameController.instance.health;
-        hitsUI.text = "Shield:" + GameController.instance.numHits;
-        bulletsUI.text = "Bullets:" + GameController.instance.numBullets;
-        specialUI.text = "Special:" + GameController.instance.specialMeter;
+        healthUI.value = GameController.instance.health;
+        hitsUI.value = GameController.instance.numHits;
+        bulletsUI.value = GameController.instance.numBullets;
+        specialUI.value = GameController.instance.specialMeter;
     }
 
     public void Resume()
@@ -91,6 +93,11 @@ public class UIScript : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void GetToPortal()
+    {
+        portalUI.SetActive(!portalUI.activeSelf);
     }
 
 }

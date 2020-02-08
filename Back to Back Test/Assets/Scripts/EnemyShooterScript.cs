@@ -9,9 +9,12 @@ public class EnemyShooterScript : MonoBehaviour
     public float bulletSpeed = 15.0f;
     private float health = 20f;
 
+    private SpriteRenderer enemySprite;
+
     void Awake()
     {
         possibleTargets = GameObject.FindGameObjectsWithTag("Player");
+        enemySprite = this.GetComponentInChildren<SpriteRenderer>();
     }
     // Start is called before the first frame update
     void Start()
@@ -47,6 +50,14 @@ public class EnemyShooterScript : MonoBehaviour
             Debug.Log(target);
             Vector2 myPos = new Vector2(transform.position.x, transform.position.y);
             Vector2 direction = target - myPos;
+            if (direction.x > 0)
+            {
+                enemySprite.flipX = false;
+            }
+            else if (direction.x < 0)
+            {
+                enemySprite.flipX = true;
+            }
             direction.Normalize();
             GameObject projectile1 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
             //randomizer for special bullet

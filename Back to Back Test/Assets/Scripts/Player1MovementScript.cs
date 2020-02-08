@@ -10,6 +10,8 @@ public class Player1MovementScript : MonoBehaviour
     private Rigidbody2D rb;
     public GameObject bullet;
 
+    [SerializeField] protected SpriteRenderer playerSprite;
+
     Vector2 movement;
 
     private void Start()
@@ -22,6 +24,8 @@ public class Player1MovementScript : MonoBehaviour
     {
         if (!UIScript.instance.isPaused)
         {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            playerSprite.transform.rotation = Quaternion.LookRotation(Vector3.forward, mousePos - transform.position);
             //Input
             movement.x = Input.GetAxisRaw("Horizontal");
 
@@ -32,7 +36,7 @@ public class Player1MovementScript : MonoBehaviour
                 if (GameController.instance.numBullets > 0)
                 {
                     Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-                    Vector2 myPos = new Vector2(transform.position.x, transform.position.y);
+                    Vector2 myPos = new Vector2(transform.position.x, transform.position.y + 0.5f);
                     Vector2 direction = target - myPos;
                     direction.Normalize();
                     GameObject projectile = (GameObject)Instantiate(bullet, myPos, Quaternion.identity);
