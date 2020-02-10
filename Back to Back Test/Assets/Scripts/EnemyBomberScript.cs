@@ -12,8 +12,11 @@ public class EnemyBomberScript : MonoBehaviour
     GameObject target;
 
     public float expRadius = 5.0f;
-    public float expPower = 50.0f;
+    public float expPower = 500.0f;
     private float health = 10f;
+
+    private float maxHealth = 10f;
+    Transform bar;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,6 +24,8 @@ public class EnemyBomberScript : MonoBehaviour
         possibleTargets = GameObject.FindGameObjectsWithTag("Player");
         target = possibleTargets[Random.Range(0, possibleTargets.Length - 1)];
         rb = GetComponent<Rigidbody2D>();
+
+        bar = this.transform.Find("HP Bar");
     }
 
     // Update is called once per frame
@@ -31,7 +36,12 @@ public class EnemyBomberScript : MonoBehaviour
             GameController.instance.numEnemies -= 1;
             Destroy(this.gameObject);
         }
-        move();
+
+        else
+        {
+            changeHPBar();
+            move();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
@@ -44,6 +54,9 @@ public class EnemyBomberScript : MonoBehaviour
             target = null;
             this.GetComponentInChildren<SpriteRenderer>().color = new Color(255f, 0f, 0f);
 
+            Transform temp = this.transform.Find("circle");
+            temp.gameObject.SetActive(true);
+            
             Invoke("explode", 2);
         }
     }
@@ -74,8 +87,11 @@ public class EnemyBomberScript : MonoBehaviour
         }
 
         //Destroy(insObj, 2f);
+        Transform temp = this.transform.Find("conc");
+        temp.gameObject.SetActive(true);
+
         GameController.instance.numEnemies -= 1;
-        Destroy(gameObject);
+        Destroy(gameObject,0.1f);
 
     }
 
@@ -105,6 +121,14 @@ public class EnemyBomberScript : MonoBehaviour
                 health -= 2 * Time.fixedDeltaTime;
             }
         }
+    }
+
+    void changeHPBar()
+    {
+        float ratio = health / maxHealth;
+
+        bar.localScale = new Vector3(ratio, bar.localScale.y, bar.localScale.z);
+
     }
 
 }

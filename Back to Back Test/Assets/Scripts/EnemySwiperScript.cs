@@ -13,10 +13,15 @@ public class EnemySwiperScript : MonoBehaviour
 
     private SpriteRenderer enemySprite;
 
+    private float maxHealth = 20f;
+    Transform bar;
+
     void Awake()
     {
         possibleTargets = GameObject.FindGameObjectsWithTag("Player");
         enemySprite = this.GetComponentInChildren<SpriteRenderer>();
+
+        bar = this.transform.Find("HP Bar");
     }
     // Start is called before the first frame update
     void Start()
@@ -36,6 +41,7 @@ public class EnemySwiperScript : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+        else { changeHPBar(); }
     }
 
     IEnumerator Hop()
@@ -107,5 +113,13 @@ public class EnemySwiperScript : MonoBehaviour
                 health -= 2 * Time.fixedDeltaTime;
             }
         }
+    }
+
+    void changeHPBar()
+    {
+        float ratio = 2* health / maxHealth;
+
+        bar.localScale = new Vector3(ratio, bar.localScale.y, bar.localScale.z);
+
     }
 }

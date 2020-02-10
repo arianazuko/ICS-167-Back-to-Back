@@ -19,10 +19,17 @@ public class BossScript : MonoBehaviour
 
     private SpriteRenderer enemySprite;
 
+    private float maxHealth = 100f;
+    Transform bar;
+    SpriteRenderer barColor;
+
     void Awake()
     {
         possibleTargets = GameObject.FindGameObjectsWithTag("Player");
         enemySprite = this.GetComponentInChildren<SpriteRenderer>();
+
+        bar = this.transform.Find("HP Bar");
+        barColor = bar.GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -37,6 +44,8 @@ public class BossScript : MonoBehaviour
             else if (health >= 100)
             {
                 phaseNum = 2;
+                barColor.color = new Color(255f, 255f, 0f, 1f);
+
                 StartCoroutine(Phase2());
             }
             else if (health < 100)
@@ -44,9 +53,15 @@ public class BossScript : MonoBehaviour
                 shield.GetComponent<BossShieldScript>().Activate();
                 shield.GetComponent<BossShieldScript>().moving = true;
                 phaseNum = 3;
+
+                barColor.color = new Color(255f, 0f, 0f, 1f);
+
                 StartCoroutine(Phase3());
             }
+            
         }
+
+        changeHPBar();
     }
 
     IEnumerator Phase1()
@@ -195,4 +210,17 @@ public class BossScript : MonoBehaviour
             }
         }
     }
+
+    void changeHPBar()
+    {
+        float ratio = 20 * ((health - ((3 - phaseNum) * maxHealth)) / maxHealth);
+        if (ratio < 0)
+        {
+            ratio = 0.1f;
+        }
+
+        bar.localScale = new Vector3(ratio, bar.localScale.y, bar.localScale.z);
+
+    }
+
 }
