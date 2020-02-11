@@ -55,6 +55,7 @@ public class ShieldScript : MonoBehaviour
         }
         if (collision.gameObject.tag == "EnemyBullet")
         {
+            SFXManagerScript.instance.PlaySFX(2);
             if (shieldMode)
             {
                 if (GameController.instance.numHits > 0)

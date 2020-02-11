@@ -23,8 +23,21 @@ public class PortalScript : MonoBehaviour
     {
         if (GameController.instance.numEnemies == 0)
         {
-            portalSprite.enabled = true;
-            checkBothPlayers();
+            if (this.name == "Boss Portal")
+            {
+                if (GameController.instance.CheckLevels() == true)
+                {
+                    portalSprite.enabled = true;
+                    SFXManagerScript.instance.PlaySFX(0);
+                    checkBothPlayers();
+                }
+            }
+            else
+            {
+                portalSprite.enabled = true;
+                SFXManagerScript.instance.PlaySFX(0);
+                checkBothPlayers();
+            }
         }
     }
 
@@ -36,10 +49,12 @@ public class PortalScript : MonoBehaviour
             if (colliders[i].gameObject.name == "Player 1")
             {
                 oneinside = true;
+                SFXManagerScript.instance.PlaySFX(3);
             }
             else if (colliders[i].gameObject.name == "Player 2")
             {
                 twoinside = true;
+                SFXManagerScript.instance.PlaySFX(3);
             }
         }
         if (oneinside && twoinside)
@@ -66,6 +81,7 @@ public class PortalScript : MonoBehaviour
                     break;
             }
             SceneManager.LoadScene(transportScene);
+            SFXManagerScript.instance.StopAudio();
         }
         else
         {

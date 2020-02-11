@@ -21,7 +21,7 @@ public class BulletScript : MonoBehaviour
         if (this.tag == "EnemyBullet")
         {
             GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject tile = GameObject.Find("walls");
+            GameObject tile = GameObject.Find("Walls");
 
             foreach (GameObject obj in playerObjects)
             {
@@ -33,7 +33,7 @@ public class BulletScript : MonoBehaviour
         if (this.tag == "SpecialEnemyBullet")
         {
             GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject tile = GameObject.Find("walls");
+            GameObject tile = GameObject.Find("Walls");
 
             foreach (GameObject obj in playerObjects)
             {

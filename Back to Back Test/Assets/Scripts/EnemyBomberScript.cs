@@ -65,7 +65,7 @@ public class EnemyBomberScript : MonoBehaviour
     private void explode()
     {
         //GameObject insObj = (GameObject)Instantiate(explosionEffect);
-
+        SFXManagerScript.instance.PlaySFX(5,0.5f);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, expRadius);
         for (int i = 0; i <= colliders.Length - 1; i++)
         {

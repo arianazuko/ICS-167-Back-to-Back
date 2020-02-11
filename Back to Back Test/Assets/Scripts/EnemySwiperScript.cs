@@ -68,6 +68,8 @@ public class EnemySwiperScript : MonoBehaviour
                 enemySprite.flipX = true;
             }
             direction.Normalize();
+            SFXManagerScript.instance.StopAudio();
+            SFXManagerScript.instance.PlaySFX(4);
             GameObject projectile1 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
             //randomizer for special bullet
             if (Random.value * 100 <= 20)
@@ -77,6 +79,8 @@ public class EnemySwiperScript : MonoBehaviour
             }
             projectile1.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
             yield return new WaitForSeconds(0.5f);
+            SFXManagerScript.instance.StopAudio();
+            SFXManagerScript.instance.PlaySFX(4);
             GameObject projectile2 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
             if (Random.value * 100 <= 20)
             {
@@ -86,6 +90,8 @@ public class EnemySwiperScript : MonoBehaviour
             direction += swipe;
             projectile2.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
             yield return new WaitForSeconds(0.5f);
+            SFXManagerScript.instance.StopAudio();
+            SFXManagerScript.instance.PlaySFX(4);
             GameObject projectile3 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
             if (Random.value * 100 <= 20)
             {

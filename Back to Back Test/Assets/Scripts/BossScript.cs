@@ -58,6 +58,10 @@ public class BossScript : MonoBehaviour
 
                 StartCoroutine(Phase3());
             }
+            else if (health <= 0)
+            {
+                UIScript.instance.Win();
+            }
             
         }
 
@@ -82,6 +86,8 @@ public class BossScript : MonoBehaviour
         projectile1.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         yield return new WaitForSeconds(0.25f);
 
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile2 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         if (Random.value * 100 <= 20)
         {
@@ -92,6 +98,8 @@ public class BossScript : MonoBehaviour
         projectile2.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         yield return new WaitForSeconds(0.25f);
 
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile3 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         if (Random.value * 100 <= 20)
         {
@@ -102,6 +110,8 @@ public class BossScript : MonoBehaviour
         projectile3.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         yield return new WaitForSeconds(0.25f);
 
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile4 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         if (Random.value * 100 <= 20)
         {
@@ -112,6 +122,8 @@ public class BossScript : MonoBehaviour
         projectile4.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         yield return new WaitForSeconds(0.25f);
 
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile5 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         if (Random.value * 100 <= 20)
         {
@@ -141,6 +153,8 @@ public class BossScript : MonoBehaviour
         Vector2 myPos = new Vector2(transform.position.x, transform.position.y);
         Vector2 direction = target - myPos;
         direction.Normalize();
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile1 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         //randomizer for special bullet
         if (Random.value * 100 <= 20)
@@ -151,6 +165,8 @@ public class BossScript : MonoBehaviour
         projectile1.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         yield return new WaitForSeconds(0.5f);
 
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile2 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         if (Random.value * 100 <= 20)
         {
@@ -160,6 +176,8 @@ public class BossScript : MonoBehaviour
         projectile2.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
         yield return new WaitForSeconds(0.5f);
 
+        SFXManagerScript.instance.StopAudio();
+        SFXManagerScript.instance.PlaySFX(4);
         GameObject projectile3 = (GameObject)Instantiate(enemyBullet, myPos, Quaternion.identity);
         if (Random.value * 100 <= 20)
         {

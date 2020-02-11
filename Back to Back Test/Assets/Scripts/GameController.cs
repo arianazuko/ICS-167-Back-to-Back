@@ -117,6 +117,31 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public bool CheckLevels()
+    {
+        if (oneonecomplete == false)
+        {
+            return false;
+        }
+        if (onetwocomplete == false)
+        {
+            return false;
+        }
+        if (twoonecomplete == false)
+        {
+            return false;
+        }
+        if (twotwocomplete == false)
+        {
+            return false;
+        }
+        if (threeonecomplete == false)
+        {
+            return false;
+        }
+        return true;
+    }
+
     void Update()
     {
         if (health <= 0)

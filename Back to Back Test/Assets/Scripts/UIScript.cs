@@ -13,6 +13,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] protected GameObject pauseMenuUI;
 
     [SerializeField] protected GameObject gameOverUI;
+    [SerializeField] protected GameObject winUI;
     [SerializeField] protected GameObject portalUI;
 
     [SerializeField] protected Slider healthUI;
@@ -80,6 +81,14 @@ public class UIScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
     }
 
+    public void Reset()
+    {
+        Time.timeScale = 1f;
+        GameObject gameController = GameObject.Find("Game Controller");
+        Destroy(gameController);
+        SceneManager.LoadScene("1-1");
+    }
+
     public void Quit()
     {
 #if UNITY_EDITOR
@@ -93,6 +102,13 @@ public class UIScript : MonoBehaviour
         Time.timeScale = 0f;
         isPaused = true;
         gameOverUI.SetActive(true);
+    }
+
+    public void Win()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+        winUI.SetActive(true);
     }
 
     public void GetToPortal()

@@ -40,6 +40,7 @@ public class Player1MovementScript : MonoBehaviour
                     Vector2 direction = target - myPos;
                     direction.Normalize();
                     GameObject projectile = (GameObject)Instantiate(bullet, myPos, Quaternion.identity);
+                    SFXManagerScript.instance.PlaySFX(1);
                     projectile.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
                     //special makes player rapid fire with unlimited ammo
                     if (!GameController.instance.specialActivated)
