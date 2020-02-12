@@ -1541,8 +1541,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 3.9792023, y: -4.942632}
+  - {x: -21.742168, y: -4.8608937}
 --- !u!4 &579938295
 Transform:
   m_ObjectHideFlags: 0
@@ -1646,7 +1646,7 @@ PrefabInstance:
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -5.64
       objectReference: {fileID: 0}
     - target: {fileID: 54392723168889249, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
@@ -1786,7 +1786,7 @@ PrefabInstance:
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 4.58
       objectReference: {fileID: 0}
     - target: {fileID: 3167700555077172896, guid: ac9bb513362686843bd92fa21b1c502e,
         type: 3}
@@ -2001,8 +2001,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 3.378193, y: -4.8825946}
+  - {x: -23.004288, y: -4.800855}
 --- !u!4 &1607520704
 Transform:
   m_ObjectHideFlags: 0

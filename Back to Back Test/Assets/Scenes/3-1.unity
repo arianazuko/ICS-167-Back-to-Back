@@ -402,6 +402,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 133734906872199058, guid: 00929e75084a0f34d81b1f16234a355b,
         type: 3}
+    - target: {fileID: 3167700555077172897, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
 --- !u!1001 &325503201
@@ -2139,8 +2144,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -0.48360443, y: 5.0094156}
+  - {x: -0.2412939, y: -7.4523096}
+  - {x: -0.40794563, y: 7.7302885}
 --- !u!4 &565569803
 Transform:
   m_ObjectHideFlags: 0
@@ -2188,8 +2193,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 7.6273184, y: -4.8825946}
+  - {x: -25.368324, y: -4.769773}
 --- !u!4 &579938295
 Transform:
   m_ObjectHideFlags: 0
@@ -2345,6 +2350,11 @@ PrefabInstance:
       propertyPath: maxMonsterNum
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}
 --- !u!1 &931258028
@@ -2485,6 +2495,11 @@ PrefabInstance:
       propertyPath: maxMonsterNum
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3167700555077172897, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
 --- !u!1 &1429326691
@@ -2520,8 +2535,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -0.48360443, y: 5.0094156}
+  - {x: -0.3926115, y: -7.7546277}
+  - {x: -0.40794468, y: 9.090727}
 --- !u!4 &1429326693
 Transform:
   m_ObjectHideFlags: 0
@@ -2807,8 +2822,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 8.6109, y: -4.8825946}
+  - {x: -23.47683, y: -4.7697706}
 --- !u!4 &1607520704
 Transform:
   m_ObjectHideFlags: 0
@@ -2901,6 +2916,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 133734906872199058, guid: 00929e75084a0f34d81b1f16234a355b,
         type: 3}
+    - target: {fileID: 3167700555077172897, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}
 --- !u!1 &1977400815
@@ -5996,6 +6016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: maxMonsterNum
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167700555077172897, guid: ac9bb513362686843bd92fa21b1c502e,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac9bb513362686843bd92fa21b1c502e, type: 3}

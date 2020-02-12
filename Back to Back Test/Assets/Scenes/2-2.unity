@@ -253,6 +253,11 @@ PrefabInstance:
       propertyPath: maxMonsterNum
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e831dd886610c634e8d36717e6cd84e7, type: 3}
 --- !u!1001 &182639979
@@ -1613,7 +1618,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
+  - {x: 3.498394, y: -4.942632}
+  - {x: -9.509394, y: -4.896938}
+  - {x: -21.742168, y: -4.920932}
   - {x: -18.25631, y: -4.920932}
 --- !u!4 &579938295
 Transform:
@@ -2262,8 +2269,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 4.880719, y: -4.7625184}
+  - {x: -22.583584, y: -4.740819}
 --- !u!4 &1607520704
 Transform:
   m_ObjectHideFlags: 0

@@ -1600,8 +1600,9 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 2.307417, y: -4.927316}
+  - {x: -21.631718, y: -4.971909}
+  - {x: -21.687738, y: -4.920932}
 --- !u!4 &579938295
 Transform:
   m_ObjectHideFlags: 0
@@ -1919,6 +1920,11 @@ PrefabInstance:
     - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
         type: 3}
       propertyPath: maxMonsterNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 54392723168889248, guid: e831dd886610c634e8d36717e6cd84e7,
+        type: 3}
+      propertyPath: spawnDelay
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3663,8 +3669,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.46827126, y: -4.8825946}
-  - {x: -18.25631, y: -4.920932}
+  - {x: 2.7551088, y: -4.7931514}
+  - {x: -22.151226, y: -4.7420454}
 --- !u!4 &1607520704
 Transform:
   m_ObjectHideFlags: 0
