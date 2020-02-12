@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     {
         timer = 0.0f;
         Debug.Log("loaded");
+        numEnemies = 0;
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
         string currentScene = SceneManager.GetActiveScene().name;
         switch (currentScene)
