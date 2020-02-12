@@ -111,9 +111,9 @@ public class UIScript : MonoBehaviour
         winUI.SetActive(true);
     }
 
-    public void GetToPortal()
+    public void GetToPortal(bool active)
     {
-        portalUI.SetActive(!portalUI.activeSelf);
+        portalUI.SetActive(active);
     }
 
 }

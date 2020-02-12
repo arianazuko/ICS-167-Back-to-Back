@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     public int numEnemies;
     private float timer = 0.0f;
     private float maxTime = 8.0f;
-    private bool textActive = false;
+    public bool textActive = false;
 
     public bool oneonecomplete = false;
     public bool onetwocomplete = false;
@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     {
         timer = 0.0f;
         Debug.Log("loaded");
+        textActive = false;
         numEnemies = 0;
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
         string currentScene = SceneManager.GetActiveScene().name;
@@ -154,16 +155,19 @@ public class GameController : MonoBehaviour
         {
             if (textActive == false)
             {
-                UIScript.instance.GetToPortal();
                 textActive = true;
+                UIScript.instance.GetToPortal(textActive);
             }
             timer += Time.deltaTime;
             Debug.Log(timer);
         }
         if (timer >= maxTime)
         {
-            UIScript.instance.GetToPortal();
-            textActive = false;
+            if (textActive == true)
+            {
+                textActive = false;
+                UIScript.instance.GetToPortal(textActive);
+            }
             Debug.Log("cats");
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
