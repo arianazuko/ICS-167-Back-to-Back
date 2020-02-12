@@ -53,6 +53,13 @@ public class BulletScript : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(this.tag == "PlayerBullet" && collision.gameObject.tag == "Walls")
+        {
+            DestroySelf();
+        }
+    }
     private void DestroySelf()
     {
         Destroy(gameObject);
