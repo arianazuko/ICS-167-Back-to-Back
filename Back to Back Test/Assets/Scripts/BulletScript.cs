@@ -10,36 +10,39 @@ public class BulletScript : MonoBehaviour
         if (this.tag == "PlayerBullet")
         {
             GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
-
             foreach (GameObject obj in playerObjects)
             {
                 Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
             }
-
         }
 
         if (this.tag == "EnemyBullet")
         {
             GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject tile = GameObject.Find("Walls");
-
+            GameObject[] tile = GameObject.FindGameObjectsWithTag("Walls");
             foreach (GameObject obj in playerObjects)
             {
                 Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
             }
-            Physics2D.IgnoreCollision(tile.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+            foreach (GameObject wall in tile)
+            {
+                Physics2D.IgnoreCollision(wall.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+            }
         }
 
         if (this.tag == "SpecialEnemyBullet")
         {
             GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Enemy");
-            GameObject tile = GameObject.Find("Walls");
+            GameObject[] tile = GameObject.FindGameObjectsWithTag("Walls");
 
             foreach (GameObject obj in playerObjects)
             {
                 Physics2D.IgnoreCollision(obj.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
             }
-            Physics2D.IgnoreCollision(tile.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+            foreach (GameObject wall in tile)
+            {
+                Physics2D.IgnoreCollision(wall.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+            }
         }
         Invoke("DestroySelf", 1.5f);
     }

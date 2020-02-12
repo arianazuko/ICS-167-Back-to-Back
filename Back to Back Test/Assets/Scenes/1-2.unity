@@ -159,6 +159,7 @@ MonoBehaviour:
   maxSpecialMeter: 100
   specialDrain: 15
   numEnemies: 2
+  textActive: 0
   oneonecomplete: 0
   onetwocomplete: 0
   twoonecomplete: 0
@@ -195,7 +196,7 @@ GameObject:
   - component: {fileID: 21367242}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1530,7 +1531,7 @@ GameObject:
   - component: {fileID: 565569802}
   m_Layer: 0
   m_Name: Right Wall
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1579,7 +1580,7 @@ GameObject:
   - component: {fileID: 579938294}
   m_Layer: 0
   m_Name: Bottom Wall
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2224,7 +2225,7 @@ GameObject:
   - component: {fileID: 1429326692}
   m_Layer: 0
   m_Name: Left Wall
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3648,7 +3649,7 @@ GameObject:
   - component: {fileID: 1607520703}
   m_Layer: 0
   m_Name: Top Wall
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
